@@ -94,4 +94,29 @@ Bitmap Creation:
 Creates a grayscale Bitmap with an 8-bit indexed pixel format.
 Sets a grayscale palette for the bitmap.
 Copies the byte array to the bitmap's pixel data and saves it as a JPEG file.
+import cv2
+import numpy as np
+from keras.models import load_model
+
+# Load pre-trained models
+color_model = load_model('color_model.h5')
+depth_model = load_model('depth_model.h5')
+
+# Capture data from Kinect (example using OpenCV)
+color_image = cv2.imread('C:\\KinectData\\color.jpg')
+depth_image = cv2.imread('C:\\KinectData\\depth.jpg', cv2.IMREAD_GRAYSCALE)
+
+# Preprocess the images
+color_image_preprocessed = preprocess_image(color_image)
+depth_image_preprocessed = preprocess_image(depth_image)
+
+# Perform inference
+color_prediction = color_model.predict(color_image_preprocessed)
+depth_prediction = depth_model.predict(depth_image_preprocessed)
+
+# Combine results
+combined_result = fuse_predictions(color_prediction, depth_prediction)
+
+# Output the result
+print(combined_result)
 
