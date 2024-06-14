@@ -119,4 +119,4 @@ combined_result = fuse_predictions(color_prediction, depth_prediction)
 
 # Output the result
 print(combined_result)
-
+Integrating Kinect data with AI systems can significantly enhance the AI's capability to understand and interact with the environment. This setup provides a comprehensive dataset that combines visual and depth information, making it an excellent foundation for advanced AI applications in various fields.
